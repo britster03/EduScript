@@ -1,0 +1,29 @@
+program         : function_def+
+
+function_def    : 'function' IDENTIFIER '(' ')' '{' statement_list '}'
+
+statement_list  : statement*
+
+statement       : command_statement
+                | if_statement
+                | loop_statement
+                | function_call
+                | return_statement
+
+command_statement : ROBOT_COMMAND '(' arguments ')' ';'
+
+if_statement    : 'if' '(' expression ')' '{' statement_list '}' ('else' '{' statement_list '}')?
+
+loop_statement  : 'repeat' '(' expression ')' '{' statement_list '}'
+
+function_call   : IDENTIFIER '(' arguments ')' ';'
+
+return_statement: 'return' expression ';'
+
+expression      : expression operator expression
+                | '(' expression ')'
+                | NUMBER
+                | IDENTIFIER
+                | function_call
+
+arguments       : (expression (',' expression)*)?

@@ -1,0 +1,4 @@
+ply==3.11
+pygame==2.5.0
+pytest==7.2.0
+pylint==2.15.10
